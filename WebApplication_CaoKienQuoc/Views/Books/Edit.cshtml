@@ -1,0 +1,47 @@
+﻿@model WebApplication_CaoKienQuoc.Models.Book
+
+@{
+    ViewBag.Title = "Edit Book";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Title)
+        @Html.TextBoxFor(model => model.Title, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Author)
+        @Html.TextBoxFor(model => model.Author, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Author, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PublicYear)
+        @Html.TextBoxFor(model => model.PublicYear, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Price)
+        @Html.TextBoxFor(model => model.Price, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Cover)
+        @Html.TextBoxFor(model => model.Cover, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    @Html.ActionLink("Cancel", "ListBooks", "Books", null, new { @class = "btn btn-default" })
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
